@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Game Loading</title>
+</head>
+<body>
+    <h1>Debug Game Loading</h1>
+    <div id="debug-output"></div>
+    
+    <script type="module">
+        const debugOutput = document.getElementById('debug-output');
+        
+        function addDebugLine(message, isError = false) {
+            const line = document.createElement('div');
+            line.textContent = message;
+            line.style.color = isError ? 'red' : 'green';
+            line.style.margin = '5px 0';
+            debugOutput.appendChild(line);
+        }
+        
+        try {
+            addDebugLine('Starting module loading test...');
+            
+            // Test GameState import
+            import('./js/utils/helpers.js').then(helpers => {
+                addDebugLine('✅ helpers.js loaded successfully');
+                
+                const gameState = new helpers.GameState();
+                addDebugLine('✅ GameState instantiated');
+                
+                // Test scene imports
+                return Promise.all([
+                    import('./js/scenes/before.js'),
+                    import('./js/scenes/during.js'),
+                    import('./js/scenes/after.js')
+                ]);
+            }).then(scenes => {
+                addDebugLine('✅ All scene modules loaded');
+                
+                const gameState = new (await import('./js/utils/helpers.js')).GameState();
+                
+                const beforeScene = new scenes[0].BeforeScene(gameState);
+                const duringScene = new scenes[1].DuringScene(gameState);
+                const afterScene = new scenes[2].AfterScene(gameState);
+                
+                addDebugLine('✅ All scenes instantiated successfully');
+                
+                // Test game.js import
+                return import('./js/game.js');
+            }).then(gameModule => {
+                addDebugLine('✅ game.js loaded successfully');
+                addDebugLine('🎉 All modules loaded without errors!');
+            }).catch(error => {
+                addDebugLine(`❌ Module loading error: ${error.message}`, true);
+                addDebugLine(`❌ Stack: ${error.stack}`, true);
+            });
+            
+        } catch (error) {
+            addDebugLine(`❌ Script error: ${error.message}`, true);
+        }
+    </script>
+</body>
+</html>
