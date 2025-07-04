@@ -4,9 +4,9 @@
   "description": "An interactive educational game teaching earthquake preparedness through three phases: before, during, and after an earthquake. Built with vanilla HTML5, CSS3, and JavaScript.",
   "main": "src/index.html",
   "scripts": {
-    "start": "live-server src --port=3000 --open=/",
-    "dev": "live-server src --port=3000 --open=/ --watch=src",
-    "build": "echo 'Static build - copy src/ contents to production server'",
+    "start": "node_modules/.bin/live-server src --port=3000 --open=/",
+    "dev": "node_modules/.bin/live-server src --port=3000 --open=/ --watch=src",
+    "build": "echo 'Static build - copy src contents to production server'",
     "test": "echo 'No tests specified yet'",
     "validate": "echo 'Validating HTML, CSS, and JS files...'",
     "serve": "python3 -m http.server 3000 --directory src",

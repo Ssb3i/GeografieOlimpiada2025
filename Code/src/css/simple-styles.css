@@ -1,0 +1,256 @@
+/* Simple Earthquake Preparedness Guide Styles */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Main content */
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Navigation tabs */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.nav-tab {
+    padding: 1.5rem 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-tab:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-tab--active {
+    background: white;
+    color: #667eea;
+    border-color: white;
+}
+
+/* Content area */
+.content {
+    background: white;
+    border-radius: 20px;
+    padding: 4rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    min-height: 600px;
+}
+
+.phase-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #667eea;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.phase-description {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #666;
+    line-height: 1.8;
+    padding: 0 2rem;
+}
+
+/* Interactive elements grid */
+.interactive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.interactive-item {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+}
+
+.interactive-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.interactive-item.clicked {
+    background: #e3f2fd;
+    border-color: #2196f3;
+}
+
+.item-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.item-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+    padding: 0 1rem;
+}
+
+.item-description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 1rem;
+}
+
+.item-details {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    border-left: 4px solid #4caf50;
+    display: none;
+    text-align: left;
+    line-height: 1.7;
+}
+
+.item-details.visible {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress indicator */
+.progress-info {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: #f0f8ff;
+    border-radius: 10px;
+}
+
+.progress-text {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .nav-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-tab {
+        width: 200px;
+    }
+    
+    .content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .interactive-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .interactive-item {
+        padding: 1.5rem;
+    }
+}
+
+/* Success feedback */
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    text-align: center;
+    border: 1px solid #c3e6cb;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Loading state */
+.loading {
+    text-align: center;
+    padding: 4rem;
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
