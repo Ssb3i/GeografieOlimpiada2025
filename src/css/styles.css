@@ -1295,7 +1295,7 @@ h1, h2, h3, h4 {
 }
 
 .educational-panel h3 {
-    color: var(--grey;
+    color: var(--grey);
     margin-bottom: 1rem;
 }
 
@@ -1630,54 +1630,41 @@ body.shake {
 }
 
 @media (max-width: 600px) {
-    .game-header {
-        padding: 1rem;
+    .game-main {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "nav"
+            "sidebar"
+            "content"
+            "footer";
     }
-    .game-title {
-        font-size: 1.2rem;
+    .game-sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        box-sizing: border-box;
+        padding: 0.5rem !important;
+        grid-area: sidebar;
     }
-    .scene-header h2 {
-        font-size: 1.1rem;
-    }
-    .scene-header p {
-        font-size: 0.95rem;
-    }
-    .tasks-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-    }
-    .task-card {
-        padding: 1rem;
-    }
-    .educational-panel {
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-    .modal__content {
-        max-width: 98vw;
-        padding: 0.5rem;
-    }
-    .modal__body {
-        padding: 1rem;
-    }
-    .room-layout {
-        height: 180px;
-    }
-
-    .furniture-item {
-        min-width: 60px;
-        font-size: 0.7rem;
-        padding: 0.3rem;
-    }
-    .btn {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
+    .game-content {
+        grid-area: content;
     }
     .score-display, .hints-panel, .achievements-panel {
-        padding: 0.5rem;
-    }
-    .scene-nav__btn {
-        padding: 0.5rem;
-        font-size: 0.95rem;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 auto 1rem auto !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        box-sizing: border-box;
     }
 }
