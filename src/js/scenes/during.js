@@ -37,38 +37,38 @@ export class DuringScene {
         return [
             {
                 id: 'indoor-office',
-                title: 'Office Building - 3rd Floor',
-                description: 'You are working at your desk when the ground starts shaking.',
+                title: 'Scoala - Etajul 3',
+                description: 'Esti la scoala când începe să se zguduie pământul.',
                 correctActions: ['drop', 'cover-desk', 'hold-on'],
                 wrongActions: ['run-outside', 'doorway', 'elevator'],
-                environment: 'indoor',
-                maxTime: 10000 // 10 seconds
+                environment: 'inauntru',
+                maxTime: 10000 // 10 secunde
             },
             {
                 id: 'indoor-home',
-                title: 'Living Room at Home',
-                description: 'You are watching TV when you feel strong shaking.',
+                title: 'Sufrageria de acasă',
+                description: 'Te uiți la televizor când simți o zguduire puternică.',
                 correctActions: ['drop', 'cover-table', 'hold-on'],
                 wrongActions: ['run-outside', 'stand-still', 'hide-doorway'],
-                environment: 'indoor',
+                environment: 'inauntru',
                 maxTime: 8000
             },
             {
                 id: 'outdoor-street',
-                title: 'Walking on a City Street',
-                description: 'You are walking when the earthquake begins.',
+                title: 'Pe stradă în oraș',
+                description: 'Mergi pe jos când începe cutremurul.',
                 correctActions: ['move-away-buildings', 'drop-open-area', 'protect-head'],
                 wrongActions: ['run-into-building', 'stand-under-sign', 'panic-run'],
-                environment: 'outdoor',
+                environment: 'afara',
                 maxTime: 12000
             },
             {
                 id: 'driving-car',
-                title: 'Driving on a Highway',
-                description: 'You are driving when you feel the car shaking.',
+                title: 'Esti pe autostradă',
+                description: 'Ești in masina când simți că mașina se zguduie.',
                 correctActions: ['pull-over', 'stay-in-car', 'avoid-bridges'],
                 wrongActions: ['keep-driving', 'get-out-car', 'stop-under-bridge'],
-                environment: 'vehicle',
+                environment: 'vehicul',
                 maxTime: 15000
             }
         ];
@@ -82,69 +82,65 @@ export class DuringScene {
         container.innerHTML = `
             <div class="scene-during">
                 <div class="scene-header">
-                    <h2>⚡ During an Earthquake: Take Action!</h2>
-                    <p>Practice the correct responses during earthquake scenarios. React quickly and choose the right actions!</p>
+                    <h2>⚡ În timpul cutremului: Acționează rapid!</h2>
+                    <p>Exersează răspunsurile corecte în scenarii de cutremur. Reacționează rapid și alege acțiunile potrivite!</p>
                 </div>
 
                 <div class="scenario-selector" id="scenario-selector">
-                    <h3>Choose a Scenario to Practice:</h3>
+                    <h3>Alege un scenariu pentru exersare:</h3>
                     <div class="scenario-grid">
                         ${this.scenarios.map(scenario => `
                             <div class="scenario-card" data-scenario="${scenario.id}">
                                 <h4>${scenario.title}</h4>
                                 <p>${scenario.description}</p>
                                 <div class="scenario-type">${scenario.environment.toUpperCase()}</div>
-                                <button class="start-scenario-btn" data-scenario="${scenario.id}">Start Scenario</button>
+                                <button class="start-scenario-btn" data-scenario="${scenario.id}">Începe scenariul</button>
                             </div>
                         `).join('')}
                     </div>
                 </div>
 
                 <div class="scenario-player hidden" id="scenario-player">
-                    <div class="earthquake-warning" id="earthquake-warning">
-                        <div class="warning-text">🚨 EARTHQUAKE DETECTED! 🚨</div>
-                        <div class="countdown" id="countdown">3</div>
-                    </div>
                     
                     <div class="scenario-environment" id="scenario-environment">
-                        <!-- Environment will be dynamically created -->
+                        <!-- Mediul va fi generat dinamic -->
                     </div>
                     
                     <div class="action-panel" id="action-panel">
                         <div class="timer-display">
-                            <span>Time Remaining: </span>
+                            <span>Timp rămas: </span>
                             <span class="timer" id="timer">10.0s</span>
                         </div>
                         <div class="actions-grid" id="actions-grid">
-                            <!-- Action buttons will be dynamically created -->
+                            <!-- Butoane de acțiune generate dinamic -->
                         </div>
                     </div>
                     
                     <div class="feedback-panel hidden" id="feedback-panel">
                         <div class="feedback-content">
-                            <h3 id="feedback-title">Great Job!</h3>
+                            <h3 id="feedback-title">Bravo!</h3>
                             <div id="feedback-message"></div>
                             <div class="scenario-stats">
-                                <div>Reaction Time: <span id="reaction-time">0.0s</span></div>
-                                <div>Score: <span id="scenario-score">0</span> points</div>
+                                <div>Timp de reacție: <span id="reaction-time">0.0s</span></div>
+                                <div>Scor: <span id="scenario-score">0</span> puncte</div>
                             </div>
-                            <button class="btn btn--primary" id="next-scenario">Try Another Scenario</button>
-                            <button class="btn btn--secondary" id="replay-scenario">Replay This Scenario</button>
+                            <button class="btn btn--primary" id="next-scenario">Încearcă alt scenariu</button>
+                            <button class="btn btn--secondary" id="replay-scenario">Repetă acest scenariu</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="educational-panel">
-                    <h3>🎯 Remember: Drop, Cover, Hold On</h3>
+                <div class="educational-panel text-grey">
+                    <h3>🎯 Amintește-ți: Culcat, Acoperit, Ține-te!</h3>
                     <div class="action-guide">
                         <div class="action-step">
-                            <strong>1. DROP:</strong> Get down on hands and knees immediately
+                            <strong>1. CULCAT:</strong> Pune-te imediat pe mâini și genunchi
                         </div>
                         <div class="action-step">
-                            <strong>2. COVER:</strong> Take cover under a sturdy desk or table
+                            <strong>2. ACOPERIT:</strong> Adăpostește-te sub o masă sau birou solid
                         </div>
                         <div class="action-step">
-                            <strong>3. HOLD ON:</strong> Hold on to your shelter and protect your head
+                            <strong>3. ȚINE-TE:</strong> Ține-te de adăpost și protejează-ți capul
                         </div>
                     </div>
                 </div>
@@ -196,32 +192,11 @@ export class DuringScene {
         // Reset state
         this.earthquakeActive = false;
         this.reactionTime = 0;
-
-        // Show warning countdown
-        this.showEarthquakeWarning();
+        
+        // Start the earthquake simulation
+        this.startEarthquakeSimulation();
     }
 
-    /**
-     * Show earthquake warning with countdown
-     */
-    showEarthquakeWarning() {
-        const warning = document.getElementById('earthquake-warning');
-        const countdown = document.getElementById('countdown');
-        warning.classList.remove('hidden');
-        let count = 3;
-        let ticks = 0;
-        const countdownInterval = setInterval(() => {
-            if (countdown) countdown.textContent = count;
-            console.log('Countdown tick:', count);
-            count--;
-            ticks++;
-            if (count < 0 || ticks > 10) { // Failsafe: never more than 10 ticks
-                clearInterval(countdownInterval);
-                warning.classList.add('hidden');
-                this.startEarthquakeSimulation();
-            }
-        }, 1000);
-    }
 
     /**
      * Start the earthquake simulation
@@ -346,30 +321,30 @@ export class DuringScene {
      */
     getActionData(actionId) {
         const actions = {
-            'drop': { icon: '⬇️', text: 'Drop to Ground' },
-            'cover-desk': { icon: '🏢', text: 'Cover Under Desk' },
-            'cover-table': { icon: '🪑', text: 'Cover Under Table' },
-            'hold-on': { icon: '🤲', text: 'Hold On' },
-            'protect-head': { icon: '🛡️', text: 'Protect Head' },
-            'move-away-buildings': { icon: '🏃‍♂️', text: 'Move Away from Buildings' },
-            'drop-open-area': { icon: '🟩', text: 'Drop in Open Area' },
-            'pull-over': { icon: '🚗', text: 'Pull Over Safely' },
-            'stay-in-car': { icon: '🚗', text: 'Stay in Vehicle' },
-            'avoid-bridges': { icon: '🚫', text: 'Avoid Overpasses' },
-            'run-outside': { icon: '🏃‍♂️', text: 'Run Outside' },
-            'doorway': { icon: '🚪', text: 'Stand in Doorway' },
-            'elevator': { icon: '🛗', text: 'Use Elevator' },
-            'stand-still': { icon: '🧍', text: 'Stand Still' },
-            'hide-doorway': { icon: '🚪', text: 'Hide in Doorway' },
-            'run-into-building': { icon: '🏢', text: 'Run into Building' },
-            'stand-under-sign': { icon: '🪧', text: 'Stand Under Sign' },
-            'panic-run': { icon: '😱', text: 'Panic and Run' },
-            'keep-driving': { icon: '🚗', text: 'Keep Driving' },
-            'get-out-car': { icon: '🚪', text: 'Get Out of Car' },
-            'stop-under-bridge': { icon: '🌉', text: 'Stop Under Bridge' }
+            'drop': { icon: '⬇️', text: 'Culcă-te la pământ' },
+            'cover-desk': { icon: '🏢', text: 'Adăpostește-te sub birou' },
+            'cover-table': { icon: '🪑', text: 'Adăpostește-te sub masă' },
+            'hold-on': { icon: '🤲', text: 'Ține-te bine' },
+            'protect-head': { icon: '🛡️', text: 'Protejează-ți capul' },
+            'move-away-buildings': { icon: '🏃‍♂️', text: 'Îndepărtează-te de clădiri' },
+            'drop-open-area': { icon: '🟩', text: 'Culcă-te într-o zonă deschisă' },
+            'pull-over': { icon: '🚗', text: 'Trage pe dreapta în siguranță' },
+            'stay-in-car': { icon: '🚗', text: 'Rămâi în mașină' },
+            'avoid-bridges': { icon: '🚫', text: 'Evită podurile' },
+            'run-outside': { icon: '🏃‍♂️', text: 'Aleargă afară' },
+            'doorway': { icon: '🚪', text: 'Stai în ușă' },
+            'elevator': { icon: '🛗', text: 'Folosește liftul' },
+            'stand-still': { icon: '🧍', text: 'Stai nemișcat' },
+            'hide-doorway': { icon: '🚪', text: 'Ascunde-te în ușă' },
+            'run-into-building': { icon: '🏢', text: 'Intră într-o clădire' },
+            'stand-under-sign': { icon: '🪧', text: 'Stai sub un semn' },
+            'panic-run': { icon: '😱', text: 'Fugi panicat' },
+            'keep-driving': { icon: '🚗', text: 'Continuă să conduci' },
+            'get-out-car': { icon: '🚪', text: 'Ieși din mașină' },
+            'stop-under-bridge': { icon: '🌉', text: 'Oprește sub pod' }
         };
 
-        return actions[actionId] || { icon: '❓', text: 'Unknown Action' };
+        return actions[actionId] || { icon: '❓', text: 'Acțiune necunoscută' };
     }
 
     /**
@@ -467,25 +442,27 @@ export class DuringScene {
         scoreDisplay.textContent = score;
 
         if (isCorrect) {
-            feedbackTitle.textContent = '✅ Excellent Response!';
+            feedbackTitle.textContent = '✅ Răspuns corect!';
             feedbackTitle.className = 'feedback-success';
             feedbackMessage.innerHTML = `
-                <p>You chose the correct action for this earthquake scenario.</p>
+                <p>Ai ales acțiunea corectă pentru acest scenariu de cutremur.</p>
                 <div class="correct-explanation">
                     ${this.getActionExplanation(actionId, true)}
                 </div>
             `;
-            audioHelper.playSuccess();
+            if (typeof audioHelper !== 'undefined' && audioHelper.playSuccess) {
+                audioHelper.playSuccess();
+            }
             
             // Add celebration particles for correct answer (disabled for now)
             // ParticleHelper.celebrationEffect(feedbackPanel);
         } else if (actionId === 'timeout') {
-            feedbackTitle.textContent = '⏰ Time\'s Up!';
+            feedbackTitle.textContent = '⏰ Timpul a expirat!';
             feedbackTitle.className = 'feedback-warning';
             feedbackMessage.innerHTML = `
-                <p>You need to react quickly during an earthquake. Practice to improve your response time.</p>
+                <p>Trebuie să reacționezi rapid în timpul unui cutremur. Exersează pentru a-ți îmbunătăți timpul de reacție.</p>
                 <div class="correct-actions">
-                    <strong>Correct actions for this scenario:</strong>
+                    <strong>Acțiuni corecte pentru acest scenariu:</strong>
                     <ul>
                         ${this.currentScenario.correctActions.map(action => 
                             `<li>${this.getActionData(action).text}</li>`
@@ -494,15 +471,15 @@ export class DuringScene {
                 </div>
             `;
         } else {
-            feedbackTitle.textContent = '❌ Incorrect Action';
+            feedbackTitle.textContent = '❌ Acțiune greșită';
             feedbackTitle.className = 'feedback-error';
             feedbackMessage.innerHTML = `
-                <p>That action could be dangerous during an earthquake.</p>
+                <p>Această acțiune poate fi periculoasă în timpul unui cutremur.</p>
                 <div class="wrong-explanation">
                     ${this.getActionExplanation(actionId, false)}
                 </div>
                 <div class="correct-actions">
-                    <strong>Better choices would be:</strong>
+                    <strong>Opțiuni mai bune ar fi:</strong>
                     <ul>
                         ${this.currentScenario.correctActions.map(action => 
                             `<li>${this.getActionData(action).text}</li>`
@@ -510,7 +487,9 @@ export class DuringScene {
                     </ul>
                 </div>
             `;
-            audioHelper.playError();
+            if (typeof audioHelper !== 'undefined' && audioHelper.playError) {
+                audioHelper.playError();
+            }
         }
 
         feedbackPanel.classList.remove('hidden');
@@ -521,19 +500,19 @@ export class DuringScene {
      */
     getActionExplanation(actionId, isCorrect) {
         const explanations = {
-            'drop': 'Dropping to hands and knees prevents you from being knocked over and protects you from falling objects.',
-            'cover-desk': 'Taking cover under a sturdy desk protects you from falling debris.',
-            'cover-table': 'A sturdy table provides excellent protection from falling objects.',
-            'hold-on': 'Holding on to your shelter ensures it stays in place and continues protecting you.',
-            'run-outside': 'Running during an earthquake increases injury risk from falling objects and being knocked down.',
-            'doorway': 'Doorways in modern buildings are not stronger than other parts of the structure.',
-            'elevator': 'Elevators can malfunction during earthquakes, trapping you inside.',
-            'move-away-buildings': 'Moving away from buildings reduces risk from falling glass and debris.',
-            'pull-over': 'Pulling over safely gets you out of traffic and away from potential hazards.',
-            'stay-in-car': 'Cars provide good protection; getting out exposes you to more dangers.'
+            'drop': 'Culcatul pe mâini și genunchi te protejează de a fi doborât și de obiectele care cad.',
+            'cover-desk': 'Adăpostirea sub un birou solid te protejează de resturile care cad.',
+            'cover-table': 'O masă solidă oferă protecție excelentă împotriva obiectelor care cad.',
+            'hold-on': 'Ținându-te de adăpost, acesta rămâne la locul lui și continuă să te protejeze.',
+            'run-outside': 'Alergatul în timpul cutremurului crește riscul de rănire din cauza obiectelor care cad.',
+            'doorway': 'Ușile din clădirile moderne nu sunt mai rezistente decât alte părți ale structurii.',
+            'elevator': 'Lifturile pot să se blocheze în timpul cutremurelor, riscând să rămâi captiv.',
+            'move-away-buildings': 'Îndepărtarea de clădiri reduce riscul de a fi lovit de geamuri sau resturi.',
+            'pull-over': 'Tragerea pe dreapta te scoate din trafic și departe de pericole.',
+            'stay-in-car': 'Mașina oferă protecție bună; ieșirea te expune la mai multe pericole.'
         };
 
-        return explanations[actionId] || 'Learn more about earthquake safety guidelines.';
+        return explanations[actionId] || 'Află mai multe despre regulile de siguranță la cutremur.';
     }
 
     /**
@@ -550,7 +529,9 @@ export class DuringScene {
      * Activate the scene
      */
     activate() {
-        audioHelper.init();
+        if (typeof audioHelper !== 'undefined' && audioHelper.init) {
+            audioHelper.init();
+        }
     }
 
     /**
@@ -572,11 +553,11 @@ export class DuringScene {
         const completedScenarios = this.gameState.scenes[this.sceneName].actions.length;
         
         if (completedScenarios === 0) {
-            return "Practice earthquake scenarios to learn proper responses. Start with an indoor scenario!";
+            return "Exersează scenarii de cutremur pentru a învăța răspunsurile corecte. Începe cu un scenariu de interior!";
         } else if (completedScenarios < 2) {
-            return "Great start! Try different scenarios to practice various earthquake situations.";
+            return "Bun început! Încearcă scenarii diferite pentru a exersa situații variate de cutremur.";
         } else {
-            return "Well done! You've mastered earthquake response. Ready for the next phase!";
+            return "Foarte bine! Ai stăpânit răspunsul la cutremur. Ești pregătit pentru următoarea etapă!";
         }
     }
 }
@@ -584,13 +565,13 @@ export class DuringScene {
 // Legacy export for backward compatibility
 function showDuringScene() {
     const instructions = `
-        <h2>During an Earthquake</h2>
+        <h2>În timpul cutremului</h2>
         <ul>
-            <li>Drop, Cover, and Hold On!</li>
-            <li>Stay indoors if you are inside.</li>
-            <li>Stay away from windows and heavy furniture.</li>
-            <li>If you are outside, move to an open area away from buildings, trees, and utility wires.</li>
-            <li>If you are driving, pull over to a safe spot and stay inside the vehicle until the shaking stops.</li>
+            <li>Culcat, Acoperit și Ține-te!</li>
+            <li>Rămâi în interior dacă ești înăuntru.</li>
+            <li>Stai departe de feronerie și mobilier greu.</li>
+            <li>Dacă ești afară, mergi într-o zonă deschisă, departe de clădiri, copaci și fire electrice.</li>
+            <li>Dacă ești la volan, trage pe dreapta într-un loc sigur și rămâi în mașină până se oprește zguduirea.</li>
         </ul>
     `;
     

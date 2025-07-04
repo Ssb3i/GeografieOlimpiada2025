@@ -22,74 +22,74 @@ export class AfterScene {
         container.innerHTML = `
             <div class="scene-after">
                 <div class="scene-header">
-                    <h2>🏥 After an Earthquake: Recovery & Assessment</h2>
-                    <p>Learn what to do immediately after an earthquake stops. Complete all assessments to finish the game!</p>
+                    <h2>🏥 După cutremur: Recuperare & Evaluare</h2>
+                    <p>Află ce trebuie să faci imediat după ce cutremurul s-a oprit. Completează toate evaluările pentru a termina jocul!</p>
                 </div>
                 
                 <div class="tasks-grid">
                     <div class="task-card" data-task="safety-assessment">
                         <div class="task-header">
-                            <h3>🔍 Safety Assessment</h3>
-                            <span class="task-status">Incomplete</span>
+                            <h3>🔍 Evaluare de siguranță</h3>
+                            <span class="task-status">Incomplet</span>
                         </div>
-                        <p>Check your immediate environment for hazards.</p>
+                        <p>Verifică mediul imediat pentru pericole.</p>
                         <div class="safety-checklist" id="safety-checklist"></div>
                     </div>
                     
                     <div class="task-card" data-task="injury-check">
                         <div class="task-header">
-                            <h3>🩹 Injury Assessment</h3>
-                            <span class="task-status">Incomplete</span>
+                            <h3>🩹 Evaluare răni</h3>
+                            <span class="task-status">Incomplet</span>
                         </div>
-                        <p>Check yourself and others for injuries and provide first aid.</p>
+                        <p>Verifică-te pe tine și pe ceilalți pentru răni și acordă primul ajutor.</p>
                         <div class="injury-scenarios" id="injury-scenarios"></div>
                     </div>
                     
                     <div class="task-card" data-task="communication">
                         <div class="task-header">
-                            <h3>📡 Emergency Communication</h3>
-                            <span class="task-status">Incomplete</span>
+                            <h3>📡 Comunicare de urgență</h3>
+                            <span class="task-status">Incomplet</span>
                         </div>
-                        <p>Contact emergency services and family members.</p>
+                        <p>Contactează serviciile de urgență și familia.</p>
                         <div class="communication-center" id="communication-center"></div>
                     </div>
                     
                     <div class="task-card" data-task="damage-report">
                         <div class="task-header">
-                            <h3>📋 Damage Documentation</h3>
-                            <span class="task-status">Incomplete</span>
+                            <h3>📋 Documentare daune</h3>
+                            <span class="task-status">Incomplet</span>
                         </div>
-                        <p>Document damage for insurance and emergency services.</p>
+                        <p>Documentează daunele pentru asigurare și servicii de urgență.</p>
                         <div class="damage-reporter" id="damage-reporter"></div>
                     </div>
                 </div>
                 
                 <div class="recovery-timeline" id="recovery-timeline">
-                    <h3>📅 Recovery Timeline</h3>
+                    <h3>📅 Cronologia recuperării</h3>
                     <div class="timeline-steps">
                         <div class="timeline-step" data-step="immediate">
-                            <span class="step-time">0-1 hours</span>
-                            <span class="step-title">Immediate Safety</span>
+                            <span class="step-time">0-1 ore</span>
+                            <span class="step-title">Siguranță imediată</span>
                         </div>
                         <div class="timeline-step" data-step="short-term">
-                            <span class="step-time">1-24 hours</span>
-                            <span class="step-title">Assessment & Communication</span>
+                            <span class="step-time">1-24 ore</span>
+                            <span class="step-title">Evaluare & Comunicare</span>
                         </div>
                         <div class="timeline-step" data-step="medium-term">
-                            <span class="step-time">1-7 days</span>
-                            <span class="step-title">Temporary Shelter & Supplies</span>
+                            <span class="step-time">1-7 zile</span>
+                            <span class="step-title">Adăpost temporar & Provizii</span>
                         </div>
                         <div class="timeline-step" data-step="long-term">
-                            <span class="step-time">Weeks-Months</span>
-                            <span class="step-title">Recovery & Rebuilding</span>
+                            <span class="step-time">Săptămâni-Luni</span>
+                            <span class="step-title">Recuperare & Reconstrucție</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="educational-panel">
-                    <h3>💡 Recovery Tips</h3>
+                    <h3>💡 Sfaturi pentru recuperare</h3>
                     <div class="fact-display" id="fact-display">
-                        Most injuries after earthquakes happen during cleanup and recovery, not during the shaking itself.
+                        Cele mai multe răni după cutremur apar în timpul curățeniei și recuperării, nu în timpul cutremurului propriu-zis.
                     </div>
                 </div>
             </div>
@@ -116,13 +116,13 @@ export class AfterScene {
         const safetyChecklist = document.getElementById('safety-checklist');
         
         const hazards = [
-            { id: 'gas-leak', name: 'Check for gas leaks', priority: 'high', points: 20 },
-            { id: 'electrical-damage', name: 'Check electrical systems', priority: 'high', points: 20 },
-            { id: 'structural-damage', name: 'Assess building structure', priority: 'high', points: 15 },
-            { id: 'water-damage', name: 'Check water lines', priority: 'medium', points: 10 },
-            { id: 'blocked-exits', name: 'Clear exit routes', priority: 'high', points: 15 },
-            { id: 'broken-glass', name: 'Clear broken glass', priority: 'medium', points: 5 },
-            { id: 'fallen-objects', name: 'Remove fallen objects from walkways', priority: 'medium', points: 5 }
+            { id: 'gas-leak', name: 'Verifică scurgerile de gaz', priority: 'high', points: 20 },
+            { id: 'electrical-damage', name: 'Verifică instalația electrică', priority: 'high', points: 20 },
+            { id: 'structural-damage', name: 'Evaluează structura clădirii', priority: 'high', points: 15 },
+            { id: 'water-damage', name: 'Verifică conductele de apă', priority: 'medium', points: 10 },
+            { id: 'blocked-exits', name: 'Eliberează căile de evacuare', priority: 'high', points: 15 },
+            { id: 'broken-glass', name: 'Curăță cioburile de sticlă', priority: 'medium', points: 5 },
+            { id: 'fallen-objects', name: 'Îndepărtează obiectele căzute de pe trasee', priority: 'medium', points: 5 }
         ];
 
         safetyChecklist.innerHTML = `
@@ -139,7 +139,6 @@ export class AfterScene {
                             <div class="hazard-info">
                                 <span class="hazard-name">${hazard.name}</span>
                                 <span class="hazard-priority">${hazard.priority.toUpperCase()}</span>
-                                <span class="hazard-points">+${hazard.points} pts</span>
                             </div>
                         </div>
                     `).join('')}
@@ -241,22 +240,22 @@ export class AfterScene {
                 <div class="scenario-selector">
                     ${scenarios.map(scenario => `
                         <div class="injury-scenario-card" data-scenario="${scenario.id}">
-                            <h4>${scenario.title}</h4>
-                            <p>${scenario.description}</p>
-                            <button class="start-scenario-btn">Start Assessment</button>
-                            <div class="scenario-status">Not Started</div>
+                            <h4>${scenario.title === 'Check Yourself' ? 'Verifică-te pe tine' : scenario.title === 'Conscious Person with Cut' ? 'Persoană conștientă cu tăietură' : scenario.title === 'Unconscious Person' ? 'Persoană inconștientă' : 'Persoană prinsă sub dărâmături'}</h4>
+                            <p>${scenario.description === 'Assess your own condition first' ? 'Evaluează-ți propria stare mai întâi' : scenario.description === 'Someone has a bleeding cut on their arm' ? 'Cineva are o tăietură sângerândă pe braț' : scenario.description === 'Someone is unconscious but breathing' ? 'Cineva este inconștient dar respiră' : 'Cineva este prins sub dărâmături dar este conștient'}</p>
+                            <button class="start-scenario-btn">Începe evaluarea</button>
+                            <div class="scenario-status">Neînceput</div>
                         </div>
                     `).join('')}
                 </div>
                 
                 <div class="first-aid-guide">
-                    <h4>🚑 First Aid Priorities</h4>
+                    <h4>🚑 Priorități de prim ajutor</h4>
                     <ol>
-                        <li><strong>Check yourself first</strong> - You can't help others if you're injured</li>
-                        <li><strong>Ensure scene safety</strong> - Don't become another victim</li>
-                        <li><strong>Call for help</strong> - Professional medical assistance</li>
-                        <li><strong>Control bleeding</strong> - Direct pressure on wounds</li>
-                        <li><strong>Treat for shock</strong> - Keep victims warm and calm</li>
+                        <li><strong>Verifică-te pe tine întâi</strong> - Nu poți ajuta pe alții dacă ești rănit</li>
+                        <li><strong>Asigură siguranța locului</strong> - Nu deveni o altă victimă</li>
+                        <li><strong>Sună după ajutor</strong> - Asistență medicală profesională</li>
+                        <li><strong>Controlează sângerarea</strong> - Presiune directă pe răni</li>
+                        <li><strong>Tratează pentru șoc</strong> - Ține victimele la cald și calmează-le</li>
                     </ol>
                 </div>
             </div>
@@ -282,27 +281,27 @@ export class AfterScene {
         
         modalBody.innerHTML = `
             <div class="injury-scenario-modal">
-                <h3>${scenario.title}</h3>
-                <p><strong>Situation:</strong> ${scenario.description}</p>
+                <h3>${scenario.title === 'Check Yourself' ? 'Verifică-te pe tine' : scenario.title === 'Conscious Person with Cut' ? 'Persoană conștientă cu tăietură' : scenario.title === 'Unconscious Person' ? 'Persoană inconștientă' : 'Persoană prinsă sub dărâmături'}</h3>
+                <p><strong>Situație:</strong> ${scenario.description === 'Assess your own condition first' ? 'Evaluează-ți propria stare mai întâi' : scenario.description === 'Someone has a bleeding cut on their arm' ? 'Cineva are o tăietură sângerândă pe braț' : scenario.description === 'Someone is unconscious but breathing' ? 'Cineva este inconștient dar respiră' : 'Cineva este prins sub dărâmături dar este conștient'}</p>
                 
                 <div class="first-aid-actions">
-                    <h4>Select the correct actions (in order):</h4>
+                    <h4>Selectează acțiunile corecte (în ordine):</h4>
                     <div class="action-options">
                         ${scenario.actions.map((action, index) => `
                             <div class="action-option" data-action="${index}">
                                 <span class="action-number">${index + 1}</span>
-                                <span class="action-text">${action}</span>
-                                <button class="select-action-btn">Select</button>
+                                <span class="action-text">${action === 'Check for bleeding' ? 'Verifică dacă sângerezi' : action === 'Test mobility' ? 'Testează mobilitatea' : action === 'Assess pain levels' ? 'Evaluează nivelul durerii' : action === 'Apply direct pressure' ? 'Aplică presiune directă' : action === 'Elevate if possible' ? 'Ridică dacă este posibil' : action === 'Cover with clean cloth' ? 'Acoperă cu o cârpă curată' : action === 'Check airway' ? 'Verifică căile respiratorii' : action === 'Monitor breathing' ? 'Monitorizează respirația' : action === 'Place in recovery position' ? 'Așază în poziție de siguranță' : action === 'Talk to them calmly' ? 'Vorbește calm cu persoana' : action === 'Do not move heavy debris alone' ? 'Nu muta singur dărâmăturile grele' : action === 'Call for professional help' ? 'Sună după ajutor specializat' : action}</span>
+                                <button class="select-action-btn">Selectează</button>
                             </div>
                         `).join('')}
                     </div>
                 </div>
                 
                 <div class="scenario-progress">
-                    <span>Progress: <span class="selected-count">0</span> / ${scenario.actions.length}</span>
+                    <span>Progres: <span class="selected-count">0</span> / ${scenario.actions.length}</span>
                 </div>
                 
-                <button class="btn btn--primary complete-scenario-btn" disabled>Complete Assessment</button>
+                <button class="btn btn--primary complete-scenario-btn" disabled>Completează evaluarea</button>
             </div>
         `;
 
@@ -366,35 +365,35 @@ export class AfterScene {
                 <div class="communication-options">
                     <div class="comm-option emergency-services" data-comm="emergency">
                         <div class="comm-icon">🚨</div>
-                        <div class="comm-title">Emergency Services</div>
-                        <div class="comm-subtitle">911 / Local Emergency</div>
-                        <button class="contact-btn">Call Now</button>
+                        <div class="comm-title">Servicii de urgență</div>
+                        <div class="comm-subtitle">911 / Urgență locală</div>
+                        <button class="contact-btn">Sună acum</button>
                     </div>
                     
                     <div class="comm-option family-contacts" data-comm="family">
                         <div class="comm-icon">👨‍👩‍👧‍👦</div>
-                        <div class="comm-title">Family & Friends</div>
-                        <div class="comm-subtitle">Let them know you're safe</div>
-                        <button class="contact-btn">Send Messages</button>
+                        <div class="comm-title">Familie & Prieteni</div>
+                        <div class="comm-subtitle">Informează-i că ești în siguranță</div>
+                        <button class="contact-btn">Trimite mesaje</button>
                     </div>
                     
                     <div class="comm-option emergency-radio" data-comm="radio">
                         <div class="comm-icon">📻</div>
-                        <div class="comm-title">Emergency Radio</div>
-                        <div class="comm-subtitle">Get official updates</div>
-                        <button class="contact-btn">Tune In</button>
+                        <div class="comm-title">Radio de urgență</div>
+                        <div class="comm-subtitle">Primește actualizări oficiale</div>
+                        <button class="contact-btn">Ajustează</button>
                     </div>
                     
                     <div class="comm-option social-media" data-comm="social">
                         <div class="comm-icon">📱</div>
-                        <div class="comm-title">Social Media</div>
-                        <div class="comm-subtitle">Check local emergency pages</div>
-                        <button class="contact-btn">Check Updates</button>
+                        <div class="comm-title">Rețele sociale</div>
+                        <div class="comm-subtitle">Verifică paginile locale de urgență</div>
+                        <button class="contact-btn">Verifică actualizările</button>
                     </div>
                 </div>
                 
                 <div class="communication-log">
-                    <h4>Communication Log</h4>
+                    <h4>Jurnal de comunicare</h4>
                     <div class="log-entries" id="comm-log"></div>
                 </div>
             </div>
@@ -421,19 +420,19 @@ export class AfterScene {
 
         switch (commType) {
             case 'emergency':
-                logEntry = `${timestamp} - Called emergency services (911)`;
+                logEntry = `${timestamp} - Ai sunat la serviciile de urgență (112)`;
                 points = 30;
                 break;
             case 'family':
-                logEntry = `${timestamp} - Contacted family members via text`;
+                logEntry = `${timestamp} - Ai contactat familia prin mesaj`;
                 points = 20;
                 break;
             case 'radio':
-                logEntry = `${timestamp} - Tuned to emergency radio broadcasts`;
+                logEntry = `${timestamp} - Ai ascultat radioul de urgență`;
                 points = 15;
                 break;
             case 'social':
-                logEntry = `${timestamp} - Checked local emergency social media`;
+                logEntry = `${timestamp} - Ai verificat rețelele sociale pentru informații de urgență`;
                 points = 10;
                 break;
         }
@@ -468,48 +467,48 @@ export class AfterScene {
         damageReporter.innerHTML = `
             <div class="damage-report-container">
                 <div class="report-form">
-                    <h4>📋 Damage Assessment Form</h4>
+                    <h4>📋 Formular de evaluare a daunelor</h4>
                     
                     <div class="damage-categories">
                         <div class="damage-category">
-                            <h5>Structural Damage</h5>
-                            <label><input type="checkbox" name="damage" value="foundation"> Foundation cracks</label>
-                            <label><input type="checkbox" name="damage" value="walls"> Wall damage</label>
-                            <label><input type="checkbox" name="damage" value="roof"> Roof damage</label>
-                            <label><input type="checkbox" name="damage" value="windows"> Broken windows</label>
+                            <h5>Daune structurale</h5>
+                            <label><input type="checkbox" name="damage" value="foundation"> Crăpături fundație</label>
+                            <label><input type="checkbox" name="damage" value="walls"> Daune pereți</label>
+                            <label><input type="checkbox" name="damage" value="roof"> Daune acoperiș</label>
+                            <label><input type="checkbox" name="damage" value="windows"> Geamuri sparte</label>
                         </div>
                         
                         <div class="damage-category">
-                            <h5>Utilities</h5>
-                            <label><input type="checkbox" name="damage" value="electricity"> Electrical issues</label>
-                            <label><input type="checkbox" name="damage" value="water"> Water line damage</label>
-                            <label><input type="checkbox" name="damage" value="gas"> Gas line issues</label>
-                            <label><input type="checkbox" name="damage" value="sewer"> Sewer problems</label>
+                            <h5>Utilități</h5>
+                            <label><input type="checkbox" name="damage" value="electricity"> Probleme electrice</label>
+                            <label><input type="checkbox" name="damage" value="water"> Daune la conductele de apă</label>
+                            <label><input type="checkbox" name="damage" value="gas"> Probleme la conductele de gaz</label>
+                            <label><input type="checkbox" name="damage" value="sewer"> Probleme cu canalizarea</label>
                         </div>
                         
                         <div class="damage-category">
-                            <h5>Personal Property</h5>
-                            <label><input type="checkbox" name="damage" value="furniture"> Furniture damage</label>
-                            <label><input type="checkbox" name="damage" value="appliances"> Appliance damage</label>
-                            <label><input type="checkbox" name="damage" value="electronics"> Electronics damage</label>
-                            <label><input type="checkbox" name="damage" value="valuables"> Valuable items</label>
+                            <h5>Proprietate personală</h5>
+                            <label><input type="checkbox" name="damage" value="furniture"> Daune mobilier</label>
+                            <label><input type="checkbox" name="damage" value="appliances"> Daune electrocasnice</label>
+                            <label><input type="checkbox" name="damage" value="electronics"> Daune electronice</label>
+                            <label><input type="checkbox" name="damage" value="valuables"> Daune bunuri de valoare</label>
                         </div>
                     </div>
                     
                     <div class="report-photos">
-                        <h5>📷 Photo Documentation</h5>
+                        <h5>📷 Documentație foto</h5>
                         <div class="photo-instructions">
-                            <p>Take photos of damage for insurance claims:</p>
-                            <button class="photo-btn" data-photo="overview">📸 Overall damage</button>
-                            <button class="photo-btn" data-photo="details">📸 Detail shots</button>
-                            <button class="photo-btn" data-photo="receipts">📸 Receipts/documents</button>
+                            <p>Fă fotografii cu daunele pentru cererile de despăgubire:</p>
+                            <button class="photo-btn" data-photo="overview">📸 Daune generale</button>
+                            <button class="photo-btn" data-photo="details">📸 Fotografii detaliate</button>
+                            <button class="photo-btn" data-photo="receipts">📸 Chitanțe/documente</button>
                         </div>
                         <div class="photo-gallery" id="photo-gallery"></div>
                     </div>
                     
                     <div class="report-actions">
-                        <button class="btn btn--primary" id="submit-damage-report">Submit Damage Report</button>
-                        <button class="btn btn--secondary" id="save-draft-report">Save as Draft</button>
+                        <button class="btn btn--primary" id="submit-damage-report">Trimite raport daune</button>
+                        <button class="btn btn--secondary" id="save-draft-report">Salvează ca schiță</button>
                     </div>
                 </div>
             </div>
@@ -561,10 +560,10 @@ export class AfterScene {
             this.gameState.addScore(this.sceneName, 40);
             this.markTaskComplete('damage-report');
             
-            alert('Damage report submitted successfully! This information has been sent to emergency services and your insurance company.');
+            alert('Raportul de daune a fost trimis cu succes! Informațiile au fost transmise către serviciile de urgență și compania de asigurări.');
             audioHelper.playSuccess();
         } else {
-            alert('Please document at least 3 types of damage and take at least 2 photos before submitting.');
+            alert('Te rugăm să bifezi cel puțin 3 tipuri de daune și să faci cel puțin 2 fotografii înainte de a trimite raportul.');
             audioHelper.playError();
         }
     }
@@ -575,7 +574,7 @@ export class AfterScene {
     saveDraftReport() {
         const checkedDamage = document.querySelectorAll('input[name="damage"]:checked');
         this.gameState.addScore(this.sceneName, 10);
-        alert(`Draft saved with ${checkedDamage.length} damage items documented.`);
+        alert(`Schița a fost salvată cu ${checkedDamage.length} tipuri de daune documentate.`);
         audioHelper.playClick();
     }
 
@@ -598,50 +597,50 @@ export class AfterScene {
     showTimelineInfo(step) {
         const stepInfo = {
             'immediate': {
-                title: 'Immediate Safety (0-1 hours)',
+                title: 'Siguranță imediată (0-1 ore)',
                 content: `
                     <ul>
-                        <li>Check for injuries and provide first aid</li>
-                        <li>Check for hazards (gas leaks, electrical damage)</li>
-                        <li>Turn off utilities if damaged</li>
-                        <li>Exit building if structurally unsafe</li>
-                        <li>Contact emergency services if needed</li>
+                        <li>Verifică dacă există răniți și acordă primul ajutor</li>
+                        <li>Verifică pericolele (scurgeri de gaz, probleme electrice)</li>
+                        <li>Oprește utilitățile dacă sunt avariate</li>
+                        <li>Părăsește clădirea dacă nu este sigură structural</li>
+                        <li>Contactează serviciile de urgență dacă este necesar</li>
                     </ul>
                 `
             },
             'short-term': {
-                title: 'Assessment & Communication (1-24 hours)',
+                title: 'Evaluare & Comunicare (1-24 ore)',
                 content: `
                     <ul>
-                        <li>Contact family and friends</li>
-                        <li>Listen to emergency broadcasts</li>
-                        <li>Document damage with photos</li>
-                        <li>Contact insurance company</li>
-                        <li>Stay away from damaged buildings</li>
+                        <li>Contactează familia și prietenii</li>
+                        <li>Ascultă transmisiunile de urgență</li>
+                        <li>Documentează daunele cu fotografii</li>
+                        <li>Contactează compania de asigurări</li>
+                        <li>Evită clădirile avariate</li>
                     </ul>
                 `
             },
             'medium-term': {
-                title: 'Temporary Shelter & Supplies (1-7 days)',
+                title: 'Adăpost temporar & Provizii (1-7 zile)',
                 content: `
                     <ul>
-                        <li>Find temporary shelter if needed</li>
-                        <li>Use emergency supplies</li>
-                        <li>Continue monitoring emergency broadcasts</li>
-                        <li>Begin cleanup when safe</li>
-                        <li>Apply for disaster assistance</li>
+                        <li>Caută adăpost temporar dacă este nevoie</li>
+                        <li>Folosește proviziile de urgență</li>
+                        <li>Continuă să asculți transmisiunile de urgență</li>
+                        <li>Începe curățenia când este sigur</li>
+                        <li>Aplică pentru ajutor în caz de dezastru</li>
                     </ul>
                 `
             },
             'long-term': {
-                title: 'Recovery & Rebuilding (Weeks-Months)',
+                title: 'Recuperare & Reconstrucție (Săptămâni-Luni)',
                 content: `
                     <ul>
-                        <li>Work with insurance adjusters</li>
-                        <li>Hire contractors for repairs</li>
-                        <li>Replace damaged belongings</li>
-                        <li>Update emergency plans based on experience</li>
-                        <li>Support community recovery efforts</li>
+                        <li>Colaborează cu evaluatorii de asigurări</li>
+                        <li>Angajează firme pentru reparații</li>
+                        <li>Înlocuiește bunurile deteriorate</li>
+                        <li>Actualizează planurile de urgență pe baza experienței</li>
+                        <li>Sprijină eforturile de recuperare ale comunității</li>
                     </ul>
                 `
             }
@@ -686,7 +685,7 @@ export class AfterScene {
         if (taskCard) {
             taskCard.classList.add('task-completed');
             const status = taskCard.querySelector('.task-status');
-            status.textContent = 'Complete ✓';
+            status.textContent = 'Complet ✓';
             status.classList.add('completed');
         }
 
@@ -723,13 +722,13 @@ export class AfterScene {
      */
     getCurrentHint() {
         if (this.completedTasks.size === 0) {
-            return "Start with safety assessment - check for immediate hazards first!";
+            return "Începe cu evaluarea de siguranță - verifică pericolele imediate!";
         } else if (this.completedTasks.size < 2) {
-            return "Good progress! Continue with injury assessment and communication.";
+            return "Progres bun! Continuă cu evaluarea rănilor și comunicarea.";
         } else if (this.completedTasks.size < this.requiredTasks.length) {
-            return "Almost finished! Complete the remaining recovery tasks.";
+            return "Aproape ai terminat! Completează restul sarcinilor de recuperare.";
         } else {
-            return "Congratulations! You've completed all earthquake preparedness training!";
+            return "Felicitări! Ai finalizat toate etapele de pregătire pentru cutremur!";
         }
     }
 }
@@ -740,16 +739,16 @@ export function showAfterScene() {
     afterScene.className = 'scene';
     
     const title = document.createElement('h1');
-    title.textContent = 'After the Earthquake';
+    title.textContent = 'După cutremur';
     afterScene.appendChild(title);
     
     const instructions = document.createElement('p');
-    instructions.textContent = '1. Check yourself and others for injuries. \n' +
-                               '2. If you are in a damaged building, exit carefully. \n' +
-                               '3. Avoid using matches, candles, or flames. \n' +
-                               '4. Stay away from damaged areas. \n' +
-                               '5. Listen to the radio or TV for updates. \n' +
-                               '6. Be prepared for aftershocks.';
+    instructions.textContent = '1. Verifică-te pe tine și pe ceilalți pentru răni. \n' +
+                               '2. Dacă ești într-o clădire avariată, ieși cu grijă. \n' +
+                               '3. Evită folosirea chibriturilor, lumânărilor sau flăcărilor. \n' +
+                               '4. Stai departe de zonele avariate. \n' +
+                               '5. Ascultă radioul sau televizorul pentru actualizări. \n' +
+                               '6. Fii pregătit pentru replici.';
     afterScene.appendChild(instructions);
     
     document.body.innerHTML = ''; // Clear previous content

@@ -86,9 +86,22 @@ export class GameState {
      */
     resetScene(sceneName) {
         if (this.scenes[sceneName]) {
+            this.totalScore -= this.scenes[sceneName].score;
             this.scenes[sceneName] = { completed: false, score: 0, actions: [] };
             this.dispatchUpdateEvent();
         }
+    }
+
+    /**
+     * Reset all scenes and total score
+     */
+    resetAll() {
+        Object.keys(this.scenes).forEach(sceneName => {
+            this.scenes[sceneName] = { completed: false, score: 0, actions: [] };
+        });
+        this.totalScore = 0;
+        this.startTime = Date.now();
+        this.dispatchUpdateEvent();
     }
 
     /**
@@ -253,40 +266,40 @@ export class UIHelpers {
 export class EducationalContent {
     static tips = {
         before: [
-            "Create an emergency kit with 3 days of supplies for each person",
-            "Secure heavy furniture and appliances to walls",
-            "Practice 'Drop, Cover, and Hold On' with your family",
-            "Know the safe spots in each room of your home",
-            "Keep important documents in a waterproof container"
+            "Creează un kit de urgență cu provizii pentru 3 zile pentru fiecare persoană",
+            "Fixează mobilierul și electrocasnicele grele de pereți",
+            "Exersează 'Culcat, Acoperit, Ține-te' cu familia ta",
+            "Cunoaște locurile sigure din fiecare cameră a locuinței tale",
+            "Păstrează documentele importante într-un recipient impermeabil"
         ],
         during: [
-            "Drop to hands and knees immediately",
-            "Take cover under a sturdy desk or table",
-            "Hold on to your shelter and protect your head",
-            "If outdoors, move away from buildings and power lines",
-            "If driving, pull over and stay in the car"
+            "Culcă-te imediat pe mâini și genunchi",
+            "Adăpostește-te sub o masă sau un birou solid",
+            "Ține-te de adăpost și protejează-ți capul",
+            "Dacă ești afară, îndepărtează-te de clădiri și linii electrice",
+            "Dacă ești la volan, trage pe dreapta și rămâi în mașină"
         ],
         after: [
-            "Check yourself and others for injuries",
-            "Look for hazards like gas leaks or electrical damage",
-            "Use battery-powered radio for emergency information",
-            "Stay out of damaged buildings",
-            "Help others if you are able and it is safe"
+            "Verifică-te pe tine și pe ceilalți pentru răni",
+            "Caută pericole precum scurgeri de gaz sau daune electrice",
+            "Folosește un radio cu baterii pentru informații de urgență",
+            "Stai departe de clădirile avariate",
+            "Ajută-i pe ceilalți dacă poți și este sigur"
         ]
     };
 
     static myths = [
         {
-            myth: "Doorways are the safest place during an earthquake",
-            fact: "Modern buildings are designed to be stronger than doorways. 'Drop, Cover, and Hold On' under a sturdy table is safer."
+            myth: "Ușile sunt cel mai sigur loc în timpul unui cutremur",
+            fact: "Clădirile moderne sunt proiectate să fie mai rezistente decât ușile. 'Culcat, Acoperit, Ține-te' sub o masă solidă este mai sigur."
         },
         {
-            myth: "You should run outside during an earthquake",
-            fact: "Most injuries occur when people try to move during shaking. Stay where you are and take cover."
+            myth: "Ar trebui să fugi afară în timpul unui cutremur",
+            fact: "Cele mai multe răni apar când oamenii încearcă să se miște în timpul cutremurului. Rămâi unde ești și adăpostește-te."
         },
         {
-            myth: "Small earthquakes prevent big ones",
-            fact: "Small earthquakes don't reduce the risk of larger ones. They're actually signs of ongoing tectonic activity."
+            myth: "Cutremurele mici previn pe cele mari",
+            fact: "Cutremurele mici nu reduc riscul unor cutremure mai mari. Ele sunt de fapt semne ale activității tectonice continue."
         }
     ];
 
@@ -370,6 +383,39 @@ export class AudioHelper {
      */
     playClick() {
         this.playSound(800, 100, 'square');
+    }
+
+    /**
+     * Play earthquake rumbling sound
+     */
+    playEarthquake(duration = 5000) {
+        if (!this.enabled || !this.audioContext) return;
+
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        const filter = this.audioContext.createBiquadFilter();
+
+        oscillator.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+
+        // Low frequency rumble
+        oscillator.frequency.setValueAtTime(40, this.audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(80, this.audioContext.currentTime + duration / 2000);
+        oscillator.frequency.exponentialRampToValueAtTime(40, this.audioContext.currentTime + duration / 1000);
+        oscillator.type = 'sawtooth';
+
+        // Low-pass filter for rumbling effect
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(200, this.audioContext.currentTime);
+
+        // Volume envelope
+        gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.3, this.audioContext.currentTime + 0.1);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration / 1000);
+
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + duration / 1000);
     }
 
     /**
