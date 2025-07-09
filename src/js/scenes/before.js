@@ -105,13 +105,17 @@ export class BeforeScene {
                 <span class="item-icon">${item.essential ? '⭐' : '📦'}</span>
                 <span class="item-name">${item.name}</span>
             `;
-            // Drag events
+            // Drag events (desktop)
             itemElement.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('text/plain', item.id);
                 setTimeout(() => itemElement.classList.add('dragging'), 0);
             });
             itemElement.addEventListener('dragend', () => {
                 itemElement.classList.remove('dragging');
+            });
+            // Tap/click to add (mobile & desktop)
+            itemElement.addEventListener('click', () => {
+                this.addItemToKit(item.id, essentialItems);
             });
             availableItems.appendChild(itemElement);
         });
