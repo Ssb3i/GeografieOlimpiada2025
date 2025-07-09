@@ -107,10 +107,7 @@ export class DuringScene {
                     </div>
                     
                     <div class="action-panel" id="action-panel">
-                        <div class="timer-display">
-                            <span>Timp rămas: </span>
-                            <span class="timer" id="timer">10.0s</span>
-                        </div>
+                        <!-- Timer removed -->
                         <div class="actions-grid" id="actions-grid">
                             <!-- Butoane de acțiune generate dinamic -->
                         </div>
@@ -218,8 +215,8 @@ export class DuringScene {
         // Create action buttons
         this.createActionButtons();
         
-        // Start timer
-        this.startTimer();
+        // Timer removed
+        // this.startTimer();
         
         // Play earthquake sound effect
         this.playEarthquakeSound();
@@ -376,42 +373,15 @@ export class DuringScene {
     }
 
     /**
-     * Start the scenario timer
-     */
-    startTimer() {
-        const timerElement = document.getElementById('timer');
-        let timeRemaining = this.currentScenario.maxTime;
-
-        this.timerInterval = setInterval(() => {
-            timeRemaining -= 100;
-            const seconds = (timeRemaining / 1000).toFixed(1);
-            timerElement.textContent = `${seconds}s`;
-
-            if (timeRemaining <= 0) {
-                this.handleTimeout();
-            }
-        }, 100);
-    }
-
-    /**
-     * Handle scenario timeout
-     */
-    handleTimeout() {
-        this.stopEarthquake();
-        this.showFeedback(false, 'timeout', 0);
-    }
-
-    /**
      * Stop earthquake simulation
      */
     stopEarthquake() {
         this.earthquakeActive = false;
         document.body.classList.remove('shake');
-        
-        if (this.timerInterval) {
-            clearInterval(this.timerInterval);
-        }
-
+        // Timer logic removed
+        // if (this.timerInterval) {
+        //     clearInterval(this.timerInterval);
+        // }
         // Hide action panel
         document.getElementById('action-panel').classList.add('hidden');
     }
